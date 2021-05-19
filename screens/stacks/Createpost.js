@@ -128,7 +128,9 @@ export default Createpost
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.secondarydark,
+        backgroundColor: '#ccc',
+        paddingLeft: 7,
+        paddingRight: 7
     },
     fab1: {
         position: 'absolute',

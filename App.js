@@ -6,15 +6,15 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs"
-import Feather from 'react-native-vector-icons/Feather';
-import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import Entypo from 'react-native-vector-icons/Entypo'
 
 import Home from "./screens/stacks/Home"
 import Search from "./screens/stacks/Search"
 import Settings from "./screens/stacks/Settings"
 import Shopping from "./screens/stacks/Shopping"
 import Details from './screens/stacks/Details'
+import Wallet from './screens/stacks/Wallet'
 import Createpost from './screens/stacks/Createpost'
 
 import colors from './assets/colors'
@@ -28,25 +28,10 @@ const Homestack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: colors.headercolor, },
-        headerTintColor: colors.primarytextcolor,
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }
+        headerShown: false
       }}
     >
-      <Stack.Screen name="home" component={Home}
-        options={{
-          title: 'Dieton',
-          headerRight: () => (
-            <TouchableOpacity>
-              <Image
-                style={{ width: 40, height: 40, borderRadius: 100 }}
-                resizeMode="cover"
-                source={{ uri: 'https://picsum.photos/200/300' }} />
-            </TouchableOpacity>
-          )
-        }} />
+      <Stack.Screen name="home" component={Home} />
       <Stack.Screen name='details' component={Details} />
       <Stack.Screen name='createpost' component={Createpost} />
     </Stack.Navigator>
@@ -69,11 +54,7 @@ const Shoppingstack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: colors.headercolor, },
-        headerTintColor: colors.primarytextcolor,
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }
+        headerShown: false
       }}
     >
       <Stack.Screen name="Shopping" component={Shopping} />
@@ -81,18 +62,14 @@ const Shoppingstack = () => {
   )
 }
 
-const SettingStack = () => {
+const WalletStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: colors.headercolor, },
-        headerTintColor: colors.primarytextcolor,
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }
+        headerShown: false
       }}
     >
-      <Stack.Screen name="settings" component={Settings} />
+      <Stack.Screen name="wallets" component={Wallet} />
     </Stack.Navigator>
   )
 }
@@ -102,7 +79,7 @@ export default function App() {
     <NavigationContainer
     >
       <Bottomtab.Navigator
-        activeColor="#6b45bc"
+        activeColor="#f75f08ef"
         inactiveColor="#388e3c"
         labeled={false}
         shifting={true}
@@ -111,23 +88,18 @@ export default function App() {
           options={{
             tabBarLabel: "Home",
             tabBarColor: colors.headercolor,
-            tabBarIcon: ({ color }) => <AntDesign name="home" color={color} size={28} />
+            tabBarIcon: ({ color }) => <Entypo name="home" color={color} size={28} />
           }}
         />
-        <Bottomtab.Screen name="search" component={Searchstack} options={{
-          tabBarLabel: "search",
-          tabBarColor: colors.headercolor,
-          tabBarIcon: ({ color }) => <AntDesign name="search1" color={color} size={28} />
-        }} />
         <Bottomtab.Screen name="shopping" component={Shoppingstack} options={{
           tabBarLabel: "shopping",
           tabBarColor: colors.headercolor,
-          tabBarIcon: ({ color }) => <FontAwesome5 name="shopping-basket" color={color} size={25} />
+          tabBarIcon: ({ color }) => <Entypo name="shopping-bag" color={color} size={25} />
         }} />
-        <Bottomtab.Screen name="settings" component={SettingStack} options={{
+        <Bottomtab.Screen name="wallet" component={WalletStack} options={{
           tabBarLabel: "profile",
           tabBarColor: colors.headercolor,
-          tabBarIcon: ({ color }) => <Feather name="settings" color={color} size={25} />
+          tabBarIcon: ({ color }) => <FontAwesome5 name="money-check-alt" color={color} size={20} />
         }} />
       </Bottomtab.Navigator>
     </NavigationContainer >
