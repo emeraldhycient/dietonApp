@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, Button, StatusBar, SafeAreaView, Image, FlatList, Alert, TouchableOpacity } from 'react-native'
-import { FAB, Searchbar } from 'react-native-paper';
+import { View, TextInput, StyleSheet, Button, StatusBar, SafeAreaView, Image, FlatList, Alert, TouchableOpacity } from 'react-native'
+import { FAB, Searchbar, Text } from 'react-native-paper';
 import colors from '../../assets/colors'
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -23,29 +23,58 @@ export default function Home({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar StatusBarStyle="light-content" />
-            <View style={{ flex: 1, position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', }}>
-                <View>
-                    <Ionicons name='settings' size={40} />
+            <View style={{ flexDirection: 'row', position: 'absolute', top: 0, right: 0, margin: 20, justifyContent: 'space-evenly' }}>
+                <View style={styles.cartContainer}>
+                    <Ionicons name='cart' size={35} />
                 </View>
-                <View>
-                    <Image
-                        source={{ uri: 'https://media.istockphoto.com/photos/varied-food-carbohydrates-protein-vegetables-fruits-dairy-legumes-on-picture-id1218254547?b=1&k=6&m=1218254547&s=170667a&w=0&h=EXwwoHJ3wI0H2jDfoFhqOiIo2c4cL0y7R8Gop3iIO30=' }}
-                        style={{ width: 40, height: 40, borderRadius: 100 }}
-                    />
+                <View style={{ flexDirection: 'row', }}>
+                    <View>
+                        <Ionicons name='settings' size={40} />
+                    </View>
+                    <View style={styles.profilePicture}>
+                        <Image
+                            source={{ uri: 'https://media.istockphoto.com/photos/varied-food-carbohydrates-protein-vegetables-fruits-dairy-legumes-on-picture-id1218254547?b=1&k=6&m=1218254547&s=170667a&w=0&h=EXwwoHJ3wI0H2jDfoFhqOiIo2c4cL0y7R8Gop3iIO30=' }}
+                            style={{ width: 40, height: 40, borderRadius: 100, }}
+                        />
+                    </View>
                 </View>
             </View>
-            <Searchbar
-                placeholder="Search Stores"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
-                style={{ width: '90%' }}
-                onIconPress={() => alert(searchQuery)}
-            />
-            {<View style={styles.cartContainer}>
-                <Ionicons name='cart' size={27} />
-            </View>}
-            <ScrollView style={{ marginTop: 50 }}>
-                <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+            <ScrollView style={{ marginTop: 70 }}>
+                <View style={{ alignItems: 'center', marginBottom: 30 }}>
+                    <Searchbar
+                        placeholder="Search Stores"
+                        onChangeText={onChangeSearch}
+                        value={searchQuery}
+                        style={{ width: '90%', }}
+                        onIconPress={() => alert(searchQuery)}
+                    />
+                </View>
+                <Text style={styles.sectionHeader}>Discover</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+                    {data.map(item => {
+                        return (
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('details', { itemid: item.id })}
+                                key={item.id}
+                            >
+                                <View style={styles.productConatiner}>
+                                    <Image
+                                        source={{ uri: item.url }}
+                                        style={{ width: '99%', height: 150, borderRadius: 10 }}
+                                    />
+                                    <View style={{
+                                        height: 80,
+                                        padding: 10
+                                    }}>
+                                        <Text>{item.name}</Text>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        )
+                    })}
+                </View>
+                <Text style={styles.sectionHeader}>Popular</Text>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                     {data.map(item => {
                         return (
                             <TouchableOpacity
@@ -71,6 +100,7 @@ export default function Home({ navigation }) {
             <FAB
                 style={styles.fab}
                 icon="plus"
+                color='#f75f08ef'
                 onPress={() => navigation.push('createpost')}
             />
 
@@ -84,15 +114,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#f3f3f3',
         alignItems: 'center',
         paddingTop: StatusBar.currentHeight,
-        //justifyContent: 'center',
+        justifyContent: 'center',
     },
     cartContainer: {
         backgroundColor: '#f3f3f3',
-        flex: 1,
+        width: 45,
+        height: 45,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 30,
-        borderRadius: 15,
+        borderRadius: 100,
         borderWidth: 1,
         borderColor: '#ccc',
         shadowColor: "#fff",
@@ -113,10 +143,9 @@ const styles = StyleSheet.create({
     productConatiner: {
         marginBottom: 30,
         backgroundColor: '#f3f3f3',
-        flex: 1,
-
+        justifyContent: 'center',
         alignItems: 'center',
-        width: 220,
+        width: 200,
         borderRadius: 15,
         borderWidth: 1,
         borderColor: '#ccc',
@@ -128,5 +157,29 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+    },
+    profilePicture: {
+        borderRadius: 100,
+        borderColor: '#ccc',
+        borderWidth: 2,
+        backgroundColor: '#f3f3f3',
+        width: 45,
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: "#fff",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    sectionHeader: {
+        marginBottom: 10,
+        marginLeft: '5%',
+        fontWeight: 'bold',
+        fontSize: 25
     },
 });
