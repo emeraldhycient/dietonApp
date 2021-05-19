@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { View, TextInput, StyleSheet, Button, StatusBar, SafeAreaView, Image, FlatList, Alert, TouchableOpacity } from 'react-native'
-import { FAB, Searchbar, Text } from 'react-native-paper';
+import { View, StyleSheet, StatusBar, SafeAreaView, Image, Alert, TouchableOpacity } from 'react-native'
+import { Divider, FAB, Searchbar, Text } from 'react-native-paper';
 import colors from '../../assets/colors'
 
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -17,7 +18,7 @@ export default function Home({ navigation }) {
 
     const data = [{ name: 'Steak Beef', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2020/05/costela-de-porco-assada-1-1024x683.jpg.webp', id: "1" }, { name: 'Creamy Pizza', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2019/01/pizza-768x1024.jpg.webp', id: "2" },
     { name: 'Fresh Berry Juice', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2020/04/three-layer-smoothie-from-banana-kiwi-and-strawberry-on-a-wooden-background-683x1024.jpg.webp', id: "3" }, { name: 'Scorched Egg', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches-819x1024.jpg.webp', id: "4" },
-    { name: 'Jollof Rice And Egg', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2021/01/hot-shakshuka-819x1024.jpg.webp', id: "5" }, { name: 'Fresh Oven Bread', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2021/04/muffin-cake-1024x683.jpg.webp', id: "6" }]
+    { name: 'Jollof Rice And Egg tomatoe sauce', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2021/01/hot-shakshuka-819x1024.jpg.webp', id: "5" }, { name: 'Fresh Oven Bread', url: 'https://cdn-cajkg.nitrocdn.com/ZJzLelPaQQUYcIzKvveTxTAioLgFVwpU/assets/static/optimized/rev-cd29551/wp-content/uploads/2021/04/muffin-cake-1024x683.jpg.webp', id: "6" }]
 
 
     return (
@@ -63,10 +64,23 @@ export default function Home({ navigation }) {
                                         style={{ width: '99%', height: 150, borderRadius: 10 }}
                                     />
                                     <View style={{
-                                        height: 80,
-                                        padding: 10
+                                        height: 100,
+                                        padding: 10,
+                                        width: '100%'
                                     }}>
-                                        <Text>{item.name}</Text>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 13, paddingBottom: 5 }}>{item.name}</Text>
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 5 }}>
+                                            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#388e3c', paddingBottom: 5 }}>#4000</Text>
+                                            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                                <AntDesign name='star' size={10} color='tomato' />
+                                                <Text>3.5</Text>
+                                            </View>
+                                        </View>
+                                        <Divider />
+                                        <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 2, paddingBottom: 1 }}>
+                                            <AntDesign name='clockcircle' size={10} color='tomato' />
+                                            <Text style={{ marginLeft: 3 }}>Delivery Time : 30 mins</Text>
+                                        </View>
                                     </View>
                                 </View>
                             </TouchableOpacity>
