@@ -13,7 +13,7 @@ const Details = ({ route, navigation }) => {
                 useNativeControls
                 resizeMode='contain'
             />
-            <Text>
+            <Text> 
                 {route.params.itemid}
             </Text>
         </View>

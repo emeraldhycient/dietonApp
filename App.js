@@ -1,27 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Image, TouchableOpacity } from 'react-native';
 
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
-import { createDrawerNavigator } from "@react-navigation/drawer"
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs"
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Entypo from 'react-native-vector-icons/Entypo'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import Home from "./screens/stacks/Home"
-import Search from "./screens/stacks/Search"
-import Settings from "./screens/stacks/Settings"
-import Shopping from "./screens/stacks/Shopping"
-import Details from './screens/stacks/Details'
-import Wallet from './screens/stacks/Wallet'
-import Createpost from './screens/stacks/Createpost'
+import { Provider } from 'jotai'
+
+import Home from './screens/Home/Home'
+import Details from './screens/Home/Details'
+import Createpost from './screens/Home/Createpost'
+import Search from "./screens/Home/Search"
+import Shopping from "./screens/Shopping/Shopping"
+import Wallet from "./screens/Wallet/Wallet"
 
 import colors from './assets/colors'
-import { color } from 'react-native-reanimated';
+
 
 const Stack = createStackNavigator();
-const Tab = createDrawerNavigator();
 const Bottomtab = createMaterialBottomTabNavigator()
 
 const Homestack = () => {
@@ -34,17 +31,14 @@ const Homestack = () => {
       <Stack.Screen name="home" component={Home} />
       <Stack.Screen name='details' component={Details} />
       <Stack.Screen name='createpost' component={Createpost} />
+      <Stack.Screen name='searchScreen' component={Searchstack} />
     </Stack.Navigator>
   )
 }
 
 const Searchstack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
-    >
+    <Stack.Navigator>
       <Stack.Screen name="search" component={Search} />
     </Stack.Navigator>
   )
@@ -76,33 +70,36 @@ const WalletStack = () => {
 
 export default function App() {
   return (
-    <NavigationContainer
-    >
-      <Bottomtab.Navigator
-        activeColor="#f75f08ef"
-        inactiveColor="#388e3c"
-        labeled={false}
-        shifting={true}
+    <Provider>
+      <NavigationContainer
       >
-        <Bottomtab.Screen name="Home" component={Homestack}
-          options={{
-            tabBarLabel: "Home",
-            tabBarColor: colors.headercolor,
-            tabBarIcon: ({ color }) => <Entypo name="home" color={color} size={28} />
-          }}
-        />
-        <Bottomtab.Screen name="shopping" component={Shoppingstack} options={{
-          tabBarLabel: "shopping",
-          tabBarColor: colors.headercolor,
-          tabBarIcon: ({ color }) => <Entypo name="shopping-bag" color={color} size={25} />
-        }} />
-        <Bottomtab.Screen name="wallet" component={WalletStack} options={{
-          tabBarLabel: "profile",
-          tabBarColor: colors.headercolor,
-          tabBarIcon: ({ color }) => <FontAwesome5 name="money-check-alt" color={color} size={20} />
-        }} />
-      </Bottomtab.Navigator>
-    </NavigationContainer >
+        <Bottomtab.Navigator
+          initialRouteName='shoppings'
+          activeColor={colors.lightblack}
+          inactiveColor={colors.purple}
+          labeled={false}
+          shifting={true}
+        >
+          <Bottomtab.Screen name="Home" component={Homestack}
+            options={{
+              tabBarLabel: "Home",
+              tabBarColor: colors.grey,
+              tabBarIcon: ({ color }) => <Ionicons name="fast-food" color={color} size={28} />
+            }}
+          />
+          <Bottomtab.Screen name="shoppings" component={Shoppingstack} options={{
+            tabBarLabel: "shopping",
+            tabBarColor: colors.grey,
+            tabBarIcon: ({ color }) => <Entypo name="shopping-bag" color={color} size={25} />
+          }} />
+          <Bottomtab.Screen name="wallet" component={WalletStack} options={{
+            tabBarLabel: "Wallet",
+            tabBarColor: colors.grey,
+            tabBarIcon: ({ color }) => <Entypo name="wallet" color={color} size={28} />
+          }} />
+        </Bottomtab.Navigator>
+      </NavigationContainer >
+    </Provider>
   );
 }
 

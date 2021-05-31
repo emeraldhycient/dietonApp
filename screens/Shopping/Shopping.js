@@ -1,20 +1,25 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, TextInput, StatusBar } from 'react-native'
+import { View, Text, StatusBar, StyleSheet } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler';
 import { Searchbar } from 'react-native-paper';
 
+import ItemList from './ItemList'
+import colors from '../../assets/colors'
 
-export default function Search() {
+
+const Shopping = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const onChangeSearch = query => setSearchQuery(query);
     return (
-        <View>
+        <View style={styles.container}>
             <StatusBar StatusBarStyle="light-content" />
             <Searchbar
-                placeholder="Search Stores"
+                placeholder="Shop Fresh Groceries"
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
+            <ItemList />
         </View>
     )
 }
@@ -22,8 +27,9 @@ export default function Search() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: colors.background,
         alignItems: 'center',
-        //justifyContent: 'center',
     },
-});
+})
+
+export default Shopping

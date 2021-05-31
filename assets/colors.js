@@ -1,9 +1,11 @@
 const colors = {
-    primarydark: '#14151a',
-    secondarydark: '#26272c',
-    primarytextcolor: '#388e3c',
-    headercolor: '#263238',
-    purple: '#6b45bc'
+    black: '#202046',
+    lightblack: '#c7c7c7',
+    background: '#f3f3f3',
+    red: 'tomato',
+    purple: '#6b45bc',
+    white: '#FFF',
+    grey: '#fafafa'
 }
 
 export default colors;
