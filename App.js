@@ -8,12 +8,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { Provider } from 'jotai'
 
-import Home from './screens/Home/Home'
-import Details from './screens/Home/Details'
-import Createpost from './screens/Home/Createpost'
-import Search from "./screens/Home/Search"
+import Home from './screens/Food/Home'
+import Details from './screens/Food/Details'
+import Createpost from './screens/Food/Createpost'
+import Postingredient from './screens/Shopping/Postingredient'
+import Search from "./screens/Food/Search"
 import Shopping from "./screens/Shopping/Shopping"
 import Wallet from "./screens/Wallet/Wallet"
+import ProfilePage from './screens/Wallet/ProfilePage'
 
 import colors from './assets/colors'
 
@@ -52,6 +54,7 @@ const Shoppingstack = () => {
       }}
     >
       <Stack.Screen name="Shopping" component={Shopping} />
+      <Stack.Screen name="Upload groceries" component={Postingredient} />
     </Stack.Navigator>
   )
 }
@@ -64,6 +67,7 @@ const WalletStack = () => {
       }}
     >
       <Stack.Screen name="wallets" component={Wallet} />
+      <Stack.Screen name='ProfilePage' component={ProfilePage} />
     </Stack.Navigator>
   )
 }

@@ -1,27 +1,22 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native'
 
 import { useAtom } from 'jotai'
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../assets/colors'
 
 
-const Profile_settingsIcon = () => {
-
+const Profile_settingsIcon = ({ navigation }) => {
 
     return (
-        <View style={{ flexDirection: 'row', position: 'absolute', top: 0, right: 0, margin: 20, justifyContent: 'space-evenly' }}>
-            <View style={{ flexDirection: 'row', }}>
-                <View>
-                    <Ionicons name='settings' size={40} />
-                </View>
-                <View style={styles.profilePicture}>
+        <View style={{ flexDirection: 'row', position: 'absolute', top: 0, right: 0, margin: 20, justifyContent: 'space-around' }}>
+
+            <View style={styles.profilePicture}>
+                <TouchableOpacity>
                     <Image
                         source={{ uri: 'https://media.istockphoto.com/photos/varied-food-carbohydrates-protein-vegetables-fruits-dairy-legumes-on-picture-id1218254547?b=1&k=6&m=1218254547&s=170667a&w=0&h=EXwwoHJ3wI0H2jDfoFhqOiIo2c4cL0y7R8Gop3iIO30=' }}
                         style={{ width: 40, height: 40, borderRadius: 100, }}
                     />
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     )

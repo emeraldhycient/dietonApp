@@ -5,6 +5,7 @@ import { Divider, FAB, Searchbar, Text, Button } from 'react-native-paper';
 import colors from '../../assets/colors'
 import AmountHolder from './AmountHolder'
 import NameHolder from './NameHolder'
+import TransactionHistory from './TransactionHistory'
 
 const Wallet = () => {
     return (
@@ -13,6 +14,8 @@ const Wallet = () => {
             <NameHolder />
             <View style={{ margin: 25 }} />
             <AmountHolder />
+            <View />
+            <TransactionHistory />
         </SafeAreaView>
     )
 }

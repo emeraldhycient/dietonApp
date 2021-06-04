@@ -14,7 +14,7 @@ const AmountHolder = () => {
     const accountBalance = 400000
     return (
         <View style={styles.container}>
-            <View style={{ width: '100%', justifyContent: 'space-around', paddingLeft: 25, paddingRight: 25, }}>
+            <View style={{ width: '100%', justifyContent: 'space-around', paddingLeft: 35, paddingRight: 25, }}>
                 <Text style={{ color: colors.grey, }}>
                     Available Balance
                 </Text>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     minContainer: {
-        width: '90%',
+        width: '80%',
         height: 90,
         borderRadius: 15,
         backgroundColor: colors.grey,
