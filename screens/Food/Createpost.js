@@ -34,7 +34,7 @@ const Createpost = () => {
         <View style={styles.container}>
             <TextInput
                 mode='outlined'
-                placeholder="Enter products name"
+                placeholder="Enter Foods name"
                 value={productname}
                 onChangeText={text => setproductname(text)}
             />
@@ -93,7 +93,7 @@ const Createpost = () => {
             />
             <Divider />
             <Divider />
-            <Button icon="camera" mode="contained">
+            <Button icon="upload" mode="contained" style={{ marginTop: 10 }}>
                 upload Food
             </Button>
         </View>
@@ -105,8 +105,9 @@ export default Createpost
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.grey,
-        paddingLeft: 7,
-        paddingRight: 7
+        backgroundColor: colors.white,
+        paddingTop: 50,
+        paddingLeft: 10,
+        paddingRight: 10
     },
 })

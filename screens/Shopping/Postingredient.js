@@ -8,7 +8,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import colors from '../../assets/colors'
 
 const Postingredient = () => {
-    const [productname, setproductname] = useState('')
+    const [Ingredientname, setIngredientname] = useState('')
     const [courier, setcourier] = useState('')
     const [ingredient, setingredient] = useState('')
     const [price, setprice] = useState('')
@@ -30,9 +30,9 @@ const Postingredient = () => {
         <View style={styles.container}>
             <TextInput
                 mode='outlined'
-                placeholder="Enter products name"
-                value={productname}
-                onChangeText={text => setproductname(text)}
+                placeholder="Enter Ingredients name"
+                value={Ingredientname}
+                onChangeText={text => setIngredientname(text)}
             />
             <Divider />
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
@@ -78,7 +78,7 @@ const Postingredient = () => {
             <Divider />
             <TextInput
                 mode='outlined'
-                placeholder="Talk  about this Great Food"
+                placeholder="kindly explain mention foods that can be made with these ingredients"
                 multiline={true}
                 numberOfLines={7}
                 value={description}
@@ -86,7 +86,7 @@ const Postingredient = () => {
             />
             <Divider />
             <Divider />
-            <Button icon="camera" mode="contained">
+            <Button icon="upload" mode="contained" style={{ marginTop: 10 }}>
                 upload Food
             </Button>
         </View>
@@ -98,8 +98,9 @@ export default Postingredient
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.grey,
-        paddingLeft: 7,
-        paddingRight: 7
+        backgroundColor: colors.white,
+        paddingTop: 50,
+        paddingLeft: 10,
+        paddingRight: 10
     },
 })

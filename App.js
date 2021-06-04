@@ -25,13 +25,9 @@ const Bottomtab = createMaterialBottomTabNavigator()
 
 const Homestack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
-    >
-      <Stack.Screen name="home" component={Home} />
-      <Stack.Screen name='details' component={Details} />
+    <Stack.Navigator>
+      <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name='details' component={Details} options={{ headerShown: false }} />
       <Stack.Screen name='createpost' component={Createpost} />
       <Stack.Screen name='searchScreen' component={Searchstack} />
     </Stack.Navigator>
@@ -48,12 +44,8 @@ const Searchstack = () => {
 
 const Shoppingstack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
-    >
-      <Stack.Screen name="Shopping" component={Shopping} />
+    <Stack.Navigator>
+      <Stack.Screen name="Shopping" component={Shopping} options={{ headerShown: false }} />
       <Stack.Screen name="Upload groceries" component={Postingredient} />
     </Stack.Navigator>
   )
@@ -61,12 +53,8 @@ const Shoppingstack = () => {
 
 const WalletStack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
-    >
-      <Stack.Screen name="wallets" component={Wallet} />
+    <Stack.Navigator>
+      <Stack.Screen name="wallets" component={Wallet} options={{ headerShown: false }} />
       <Stack.Screen name='ProfilePage' component={ProfilePage} />
     </Stack.Navigator>
   )

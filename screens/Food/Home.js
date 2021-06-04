@@ -187,7 +187,6 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        fontFamily: 'gilroy',
         backgroundColor: colors.background,
         alignItems: 'center',
         paddingTop: StatusBar.currentHeight,

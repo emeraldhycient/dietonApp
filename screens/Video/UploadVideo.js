@@ -8,10 +8,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import colors from '../../assets/colors'
 
 const UploadVideo = () => {
-    const [productname, setproductname] = useState('')
-    const [courier, setcourier] = useState('')
-    const [ingredient, setingredient] = useState('')
-    const [price, setprice] = useState('')
+    const [Videoname, setVideoname] = useState('')
     const [description, setdescription] = useState('')
     const [Video, setVideo] = useState('')
     const [Image, setImage] = useState('')
@@ -35,8 +32,8 @@ const UploadVideo = () => {
             <TextInput
                 mode='outlined'
                 placeholder="Enter products name"
-                value={productname}
-                onChangeText={text => setproductname(text)}
+                value={Videoname}
+                onChangeText={text => setVideoname(text)}
             />
             <Divider />
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
@@ -48,44 +45,12 @@ const UploadVideo = () => {
                 </Button>
             </View>
             <Divider />
-            <TextInput
-                mode='outlined'
-                placeholder="List all ingredients"
-                multiline={true}
-                numberOfLines={7}
-                value={ingredient}
-                onChangeText={text => setingredient(text)}
-            />
+
             <Divider />
-            <Card>
-                <Picker
-                    selectedValue={courier}
-                    style={{ height: 50, width: 100 }}
-                    mode='dropdown'
-                    onValueChange={(itemValue, itemIndex) =>
-                        setcourier(itemValue)
-                    }
-                    style={{ width: '100%', height: 50, color: '#ccc' }}
-                >
-                    <Picker.Item label="Select Courier" value="" />
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                </Picker>
-            </Card>
             <Divider />
             <TextInput
                 mode='outlined'
-                placeholder="Enter price"
-                numeric
-                keyboardType={'numeric'}
-                value={price}
-                onChangeText={text => setprice(text)}
-            />
-            <Divider />
-            <TextInput
-                mode='outlined'
-                placeholder="Talk  about this Great Food"
+                placeholder="Video description"
                 multiline={true}
                 numberOfLines={7}
                 value={description}
@@ -93,7 +58,7 @@ const UploadVideo = () => {
             />
             <Divider />
             <Divider />
-            <Button icon="camera" mode="contained">
+            <Button icon="upload" mode="contained" style={{ marginTop: 10 }}>
                 upload Food
             </Button>
         </View>
@@ -105,8 +70,9 @@ export default UploadVideo
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.grey,
-        paddingLeft: 7,
-        paddingRight: 7
+        backgroundColor: colors.white,
+        paddingTop: 50,
+        paddingLeft: 10,
+        paddingRight: 10
     },
 })
